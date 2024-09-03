@@ -1,0 +1,24 @@
+{
+    "name": "desafio-modulo2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "tsx watch src/server.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^22.5.2",
+        "tsx": "^4.19.0",
+        "typescript": "^5.5.4"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "fastify": "^4.28.1",
+        "knex": "^3.1.0",
+        "sqlite3": "^5.1.7",
+        "zod": "^3.23.8"
+    }
+}
