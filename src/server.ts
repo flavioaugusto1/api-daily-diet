@@ -4,7 +4,7 @@ import { env } from './env'
 const app = fastify()
 
 app.get('/hello', async (response) => {
-    return console.log('Hello world')
+    return console.log('')
 })
 
 app.listen({
