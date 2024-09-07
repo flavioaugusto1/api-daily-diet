@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [x] Deve ser possível criar um usuário
 [x] Deve ser possível identificar o usuário entre as requisições
 [x] Deve ser possível registrar uma refeição feita, com as seguintes informações:
@@ -7,16 +6,6 @@
     - Descrição
     - Data e Hora
     - Está dentro ou não da dieta
-=======
-[ ] Deve ser possível criar um usuário  
-[ ] Deve ser possível identificar o usuário entre as requisições  
-[ ] Deve ser possível registrar uma refeição feita, com as seguintes informações:  
-*As refeições devem ser relacionadas a um usuário.*  
-- Nome  
-- Descrição  
-- Data e Hora  
-- Está dentro ou não da dieta
->>>>>>> c55a3c76e4e117c6db3b588b1cab6e07e359438b
 
 [ ] Deve ser possível editar uma refeição, podendo alterar todos os dados acima  
 [ ] Deve ser possível apagar uma refeição  
