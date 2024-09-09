@@ -17,4 +17,4 @@
 - Quantidade total de refeições fora da dieta  
 - Melhor sequência de refeições dentro da dieta  
 
-[ ] O usuário só pode visualizar, editar e apagar as refeições o qual ele criou
+[x] O usuário só pode visualizar, editar e apagar as refeições o qual ele criou
