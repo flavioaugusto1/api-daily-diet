@@ -22,6 +22,29 @@ export async function createMealRoutes(app: FastifyInstance) {
 
             const { sessionId } = request.cookies
 
+            let [{ actual_sequence_diet, best_sequence_diet }] = await knex(
+                'user',
+            ).where('session_id', sessionId)
+
+            if (in_diet) {
+                actual_sequence_diet += 1
+                best_sequence_diet < actual_sequence_diet
+                    ? (best_sequence_diet = actual_sequence_diet)
+                    : best_sequence_diet
+            } else {
+                actual_sequence_diet = 0
+                best_sequence_diet < actual_sequence_diet
+                    ? (best_sequence_diet = actual_sequence_diet)
+                    : best_sequence_diet
+            }
+
+            await knex('user')
+                .update({
+                    actual_sequence_diet: actual_sequence_diet,
+                    best_sequence_diet: best_sequence_diet,
+                })
+                .where('session_id', sessionId)
+
             await knex('meals').insert({
                 id: randomUUID(),
                 name,
@@ -139,6 +162,40 @@ export async function createMealRoutes(app: FastifyInstance) {
 
             response.send({
                 message: 'Atualizado com sucesso.',
+            })
+        },
+    )
+
+    app.get(
+        '/resume',
+        { preHandler: [checkSessionIdExists] },
+        async (request, response) => {
+            const { sessionId } = request.cookies
+
+            const [{ actual_sequence_diet, best_sequence_diet }] = await knex(
+                'user',
+            ).where('session_id', sessionId)
+
+            const [{ meal_quantity }] = await knex('meals')
+                .where('session_id', sessionId)
+                .count({ meal_quantity: '*' })
+
+            const [{ meal_inside_diet }] = await knex('meals')
+                .where('in_diet', '=', 1)
+                .andWhere('session_id', sessionId)
+                .count({ meal_inside_diet: '*' })
+
+            const [{ meal_outside_diet }] = await knex('meals')
+                .where('in_diet', '=', 0)
+                .andWhere('session_id', sessionId)
+                .count({ meal_outside_diet: '*' })
+
+            return response.send({
+                actual_sequence_diet,
+                best_sequence_diet,
+                meal_quantity,
+                meal_inside_diet,
+                meal_outside_diet,
             })
         },
     )

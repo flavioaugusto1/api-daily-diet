@@ -6,6 +6,8 @@ declare module 'knex/types/tables' {
             id: string
             name: string
             email: string
+            best_sequence_diet: number
+            actual_sequence_diet: number
             session_id: string
             created_at: string
         }
